@@ -3,15 +3,30 @@ import { getStatusColor } from "../../Utils/getColor";
 import Modal from "../../Utils/Modal";
 
 function CoresItem({ cores }) {
+  const [itemPerPage, setItemPerpage] = useState(8);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  // Calculate the total number of pages
+  const pageButton = Array.from(
+    { length: Math.ceil(cores.length / itemPerPage) },
+    (_, i) => i
+  );
+
+  // Calculate start and end index for pagination
+  const startPage = itemPerPage * currentPage;
+  const endPage = startPage + itemPerPage;
+
   const [selectedCores, setSelectedCore] = useState();
+
   function onClose() {
     setSelectedCore(null);
   }
+
   return (
     <>
       {cores.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 p-4">
-          {cores.map((core) => (
+          {cores.slice(startPage, endPage).map((core) => (
             <div
               key={core.core_serial}
               onClick={() => setSelectedCore(core)}
@@ -80,6 +95,20 @@ function CoresItem({ cores }) {
       ) : (
         <p className="text-center text-gray-400 text-lg">No cores found.</p>
       )}
+
+      <div className="flex justify-center mt-4">
+        {pageButton.map((pageIndex) => (
+          <button
+            key={pageIndex}
+            className={`bg-amber-950 p-3 m-2 rounded-4xl text-amber-50 ${
+              pageIndex === currentPage ? "bg-blue-600" : ""
+            }`}
+            onClick={() => setCurrentPage(pageIndex)}
+          >
+            {pageIndex + 1}
+          </button>
+        ))}
+      </div>
 
       {selectedCores && (
         <Modal
