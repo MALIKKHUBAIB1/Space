@@ -58,6 +58,7 @@ const Navbar = () => {
               "Crew",
               "Rockets",
               "Ships",
+              "History",
             ].map((item, index) => (
               <li key={index}>
                 <NavLink

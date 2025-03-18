@@ -9,6 +9,7 @@ import Capsule from "./component/capsules/Capsule";
 import Cores from "./component/Cores/Cores";
 import Dragon from "./component/dragon/Dragon";
 import DragonDetailsPage from "./component/dragon/DragonDetailsPage";
+import History from "./component/History/History";
 function App() {
   const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ function App() {
         {
           element: <Dragon />,
           path: "/dragons",
+        },
+        {
+          element: <History />,
+          path: "/history",
         },
         {
           element: <DragonDetailsPage />,
