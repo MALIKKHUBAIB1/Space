@@ -6,6 +6,8 @@ function useFetechData(url) {
     try {
       const res = await fetch(url);
       const data = await res.json();
+      // console.log(url);
+      // console.log(data);
       setData(data);
     } catch (error) {
       setError(error.message);

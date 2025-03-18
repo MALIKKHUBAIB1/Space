@@ -7,6 +7,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./component/Home";
 import Capsule from "./component/capsules/Capsule";
 import Cores from "./component/Cores/Cores";
+import Dragon from "./component/dragon/Dragon";
+import DragonDetailsPage from "./component/dragon/DragonDetailsPage";
 function App() {
   const router = createBrowserRouter([
     {
@@ -24,6 +26,14 @@ function App() {
         {
           element: <Cores />,
           path: "/cores",
+        },
+        {
+          element: <Dragon />,
+          path: "/dragons",
+        },
+        {
+          element: <DragonDetailsPage />,
+          path: "/dragons/:id",
         },
       ],
     },
