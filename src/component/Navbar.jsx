@@ -63,6 +63,7 @@ const Navbar = () => {
               <li key={index}>
                 <NavLink
                   to={`/${item.toLowerCase()}`}
+                  onClick={() => setIsOpen(false)}
                   className={({ isActive }) =>
                     `block py-2 px-3 rounded-sm md:border-0 md:p-0 
     ${
